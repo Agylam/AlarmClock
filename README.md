@@ -3,7 +3,7 @@
 ---
 ### Примеры запросов и ответов:
 
-### GET /api/alarm/status/:school 
+### GET /api/alarm/status/:school_id
 
 Headers:
   Authorizate: Bearer {TOKEN}
@@ -17,6 +17,8 @@ Headers:
 ```json
 {"alarm":false}
 ```
+
+school_id и TOKEN берётся из .env
 
 После того, как бэк ответил положительно, скрипт проверяет наличие предоставленного файла (по хэшу MD5 в ответе),
 
