@@ -1,9 +1,9 @@
-import requests
+from playsound import playsound
 from dotenv import load_dotenv, find_dotenv
-import os
 import urllib.request
+import requests
+import os
 import re
-
 
 load_dotenv(find_dotenv())
 
@@ -15,15 +15,6 @@ HEADERS = {"Authorization": f"Bearer {TOKEN}"}
 
 def get_values_list(dictionary):
     return list(dictionary.values())
-
-
-def get_answer():
-
-    """Получает бул ответ от бэка, исходя из которого будет/не будет
-       проигрываться звонок """
-
-    response = requests.get(f"{API_URL}/api/v1/alarm/status/{SCHOOL_ID}", headers=HEADERS)
-    return response.json()
 
 
 def get_alarm_list():
@@ -45,6 +36,10 @@ def get_list_music():
 
 def get_list_keys(dictionary):
     return list(dictionary.keys())
+
+
+def play_music(filename):
+    playsound(f"music/{filename}.mp3")
 
 
 
