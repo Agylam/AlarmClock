@@ -1,5 +1,7 @@
+import time
 import requests
 # from pprint import pprint
+from time import sleep
 from dotenv import load_dotenv, find_dotenv
 import os
 import urllib.request
@@ -59,8 +61,7 @@ def filter_music(folder_list, alarm_list):
     # Удаляться, если его нет в бэке но есть в фолдер листе
     # Скачиваться, когда его нет в фолдере и есть в бэке
 
-
-def main():
+def sync():
     alarm_list = get_alarm_list()
     backend_list = get_list_keys(get_alarm_list())
     folder_list = get_list_music()
@@ -69,6 +70,12 @@ def main():
     # print(backend_list)
     # print(folder_list)
     # pprint(alarm_list())
+
+
+def main():
+    while True:
+        sync()
+        time.sleep(5)
 
 
 if __name__ == "__main__":
